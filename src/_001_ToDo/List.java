@@ -1,9 +1,6 @@
 package _001_ToDo;
 
-import javax.imageio.IIOException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,14 +9,23 @@ import java.util.Scanner;
  */
 public class List {
 
+    //IntelliJ did it :D
+    public List() throws FileNotFoundException {
+    }
+
     //Scanner and Arraylist for methods in the List Class.
     Scanner input = new Scanner(System.in);
     ArrayList<String> shoppingArray = new ArrayList<>();
     ArrayList<String> toDoArray = new ArrayList<>();
 
+
     //Variables to store the input for y/n questions and the names of list txt documents.
     char yesNo;
     String shopFileName = "shoppingList.txt", toDoFileName = "remindList.txt";
+    //Scanners to read text files
+    Scanner readShopFile = new Scanner(new FileReader(shopFileName));
+    Scanner readToDoFile = new Scanner(new FileReader(toDoFileName));
+
 
     public void addToList(){
         int listOptions;
@@ -52,6 +58,12 @@ public class List {
         System.out.println("Shopping List: " + shoppingArray);
         System.out.println("To Do List: " + toDoArray);
         // Reads the list from the file.
+        while (readShopFile.hasNextLine()){
+            shoppingArray.add(readShopFile.nextLine());
+        }
+        while (readToDoFile.hasNextLine()){
+            toDoArray.add(readToDoFile.nextLine());
+        }
 
 
     }
