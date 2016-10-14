@@ -1,5 +1,6 @@
 package _001_ToDo;
 
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,7 +18,12 @@ public class Menu {
         boolean menuActive = true;
 
         //Accessing methods in other classes
-        List accessList =new List();
+        List accessList = null;
+        try {
+            accessList = new List();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         Help accessHelp = new Help();
 
         try {
